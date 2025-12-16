@@ -1,0 +1,114 @@
+<div class="slider">
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+            alt="Muro de cidade"
+            width="513" height="342" 
+            title="Muro da Cidade por Tarso Bessa">
+    </p>
+
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" 
+            alt="Intro Cod3r" height="342">
+    </p>
+
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" 
+            alt="Rio de Janeiro"
+            height="342">
+    </p>
+
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar"
+        height="50" align="left" >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Deleniti, quae expedita assumenda iusto quas eius accusamus, 
+        inventore nulla neque laborum ab, excepturi iure repellat cum 
+        velit praesentium reiciendis quisquam esse!
+    </p>
+
+    <p class="cidade"></p>
+
+    <p>
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+                media="(min-width:600px)">
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" 
+            alt="Logo">
+        </picture>
+    </p>
+
+</div>
+
+
+<style>
+    .slider{
+        position: relative;
+        width: 513px;
+        height: 342px;
+        margin: 40px auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .slider p{
+        position: absolute;
+        top: 0;
+        width: 513px;
+        height: 342px;
+        transition: left 1s ease;
+    }
+
+    .circular{
+        background-color: #444;
+    }
+
+    .texto{
+        width: 100%;
+        background: white;
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+    .texto img{
+        margin-right: 10px;
+    }
+
+    .cidade{
+        background-image: url("http://files.cod3r.com.br/curso-web/imagem4.jpg") ;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+    
+
+
+<script>
+    const slides = document.querySelectorAll('.slider p')
+    const total = slides.length
+    const width = 513 
+    let index = 0
+    
+    slides.forEach((slide, i) => {
+        slide.style.left = `${i * width}px`
+    })
+
+    function nextSlide(){
+        index++
+
+        if(index >= total){
+            index = 0
+        }
+        
+        slides.forEach((slide, i) => {
+            slide.style.left = `${(i - index) * width}px`
+        })
+        
+    }
+
+    setInterval(nextSlide, 3000)
+
+</script>
+
